@@ -1,0 +1,24 @@
+
+<%= form_for @collection, url: {action: "create" } do |f| %>
+
+	<% if @collection.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@collection.errors.count, "error") %> prohibited this user from being saved:</h2>
+			<ul>
+				<% @collection.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	
+    <br/>
+    <div class="signup_field">
+      <label for="title">Name:</label> <br/>
+      <%= f.text_field :name %> <br/>
+    </div>  
+
+    <%= f.submit "Add" %>
+<% end %>
+
+<%=link_to 'List', { :controller => "collection", :action => "list"}, :method => :get, class: "btn btn-lg btn-primary"%>

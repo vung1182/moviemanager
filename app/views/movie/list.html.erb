@@ -1,0 +1,43 @@
+<%= link_to 'Add a movie', '/movie/new', class: "btn btn-lg btn-primary"%>
+<h1>All movies in DB</h1>
+
+<%= grid(@movies_grid, upper_pagination_panel: true, show_filters: :when_filtered) do |g|
+
+  g.blank_slate  do
+    content_tag :div, "No movies found", class: 'well'
+  end
+  g.column name: "Title", attribute: 'title'  do |movie|
+    movie.title
+  end
+
+  g.column name: "Format", attribute: 'format' do |movie|
+    movie.format
+  end
+
+  g.column name: "Length", attribute: 'length' do |movie|
+    movie.format
+  end
+  
+  g.column name: "Release Year", attribute: 'release_year' do |movie|
+    movie.release_year
+  end
+  
+  g.column name: "Rating", attribute: 'rating' do |movie|
+    movie.rating
+  end
+  
+  g.column name: "" do |movie|
+    link_to 'Read', { :controller => "movie", :action => "read", :id => movie.id }
+  end
+  
+  g.column name: "" do |movie|
+    link_to 'Edit', { :controller => "movie", :action => "edit", :id => movie.id }
+  end
+  
+  g.column name: "" do |movie|
+    link_to 'Delete', { :controller => "movie", :action => "delete", :id => movie.id }, :method => :delete
+  end
+  
+end -%>
+<br>
+

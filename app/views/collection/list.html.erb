@@ -1,0 +1,28 @@
+<%= link_to 'A new collection', '/collection/new', class: "btn btn-lg btn-primary" %>
+<h1>All collections</h1>
+
+<%= grid(@collections_grid, upper_pagination_panel: true, show_filters: :when_filtered) do |g|
+
+  g.blank_slate  do
+    content_tag :div, "No collections found"
+  end
+  
+  g.column name: "Name", attribute: 'name'  do |collection|
+    collection.name
+  end
+
+  g.column name: "" do |collection|
+    link_to 'Read', { :controller => "collection", :action => "read", :id => collection.id }
+  end
+  
+  g.column name: "" do |collection|
+    link_to 'Edit', { :controller => "collection", :action => "edit", :id => collection.id }
+  end
+  
+  g.column name: "" do |collection|
+    link_to 'Delete', { :controller => "collection", :action => "delete", :id => collection.id }, :method => :delete
+  end
+  
+end -%>
+<br>
+

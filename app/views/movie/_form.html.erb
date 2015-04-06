@@ -1,0 +1,42 @@
+
+<%= form_for @movie, url: {action: "update" } do |f| %>
+
+	<% if @movie.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@movie.errors.count, "error") %> prohibited this user from being saved:</h2>
+			<ul>
+				<% @movie.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	
+    <br/>
+    <div class="signup_field">
+      <label for="title">Title:</label> <br/>
+      <%= f.text_field :title %> <br/>
+    </div>
+
+    <div class="signup_field">
+      <label for="format">Format:</label><br/>
+      <%= f.text_field :format %> <br/> <br/>
+    </div>
+
+    <div class="signup_field">
+      <label for="length">Length:</label><br/>
+      <%= f.text_field :length %> <br/> <br/>
+    </div>
+
+    <div class="signup_field">
+      <label for="release_year">Release Year:</label><br/>
+      <%= f.text_field :release_year %> <br/> 
+    </div>
+
+    <div class="signup_field">
+      <label for="rating">Rating:</label><br/>
+      <%= f.text_field :rating %> <br/> 
+    </div>
+
+    <%= f.submit "Update", class: "btn btn-lg btn-primary"%>
+<% end %>
