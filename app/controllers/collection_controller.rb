@@ -59,6 +59,13 @@ class CollectionController < ApplicationController
     end
   end
   
+  def delete
+    @collection = Movie.find(params[:id])
+    if @collection.destroy
+      redirect_to :action => "list"
+    end
+  end
+  
   def collection_params
     params.require(:collection).permit(:name)
   end
