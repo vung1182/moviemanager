@@ -12,7 +12,7 @@
 
 <p>
   <strong>Length:</strong>
-  <%= @movie.length %>
+  <%= Time.at(60*@movie.length).utc.strftime("%H:%M:%S") %>
 </p>
 
 <p>
