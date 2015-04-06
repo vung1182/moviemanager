@@ -1,0 +1,38 @@
+<p>
+  <strong>Name:</strong>
+  <%= @collection.name %>
+</p>
+	
+	<h1>Movies in collection</h1>
+	<%= grid(@movies_collection_grid, upper_pagination_panel: true, show_filters: :when_filtered) do |g|
+
+		  g.blank_slate  do
+		    content_tag :div, "Empty", class: 'well'
+		  end
+		  g.column name: "Title", attribute: 'title'  do |movie|
+		    movie.title
+		  end
+		
+		  g.column name: "Format", attribute: 'format' do |movie|
+		    movie.format
+		  end
+		
+		  g.column name: "Length", attribute: 'length' do |movie|
+		    movie.length
+		  end
+		  
+		  g.column name: "Release Year", attribute: 'release_year' do |movie|
+		    movie.release_year
+		  end
+		  
+		  g.column name: "Rating", attribute: 'rating' do |movie|
+		    movie.rating
+		  end
+		  
+		  g.column name: "" do |movie|
+		    link_to 'Remove', { :controller => "collection", :action => "remove_movie", :collection_id => @collection_id, :movie_id => movie.id }, :method => :delete
+		  end		  
+	end -%>
+	
+<br>
+<%=link_to 'List', { :controller => "collection", :action => "list"}, :method => :get, class: "btn btn-lg btn-primary"%>

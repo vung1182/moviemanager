@@ -19,6 +19,7 @@ class CollectionController < ApplicationController
   
   def read
     @collection = Collection.find(params[:id])
+    @movies_collection_grid = initialize_grid(@collection.movies, order_direction: 'desc', per_page: 10)
   end
     
   def edit

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post 'collection/update', to: 'collection#update'
   post 'collection/add_to_collection', to: 'collection#add_to_collection'
   delete 'collection/remove_movie', to: 'collection#remove_movie'
-  
+  get 'collection/read/:id', to: 'collection#read'
   post ':controller(/:action(/:id(.:format)))'
   
   
