@@ -1,6 +1,8 @@
 <header class="headerclass">
     <%= link_to "movie", '#', id: "logo" %>
     <%=link_to 'Home', "/home/home1", class: "btn btn-lg btn-primary"%>
+    <%= link_to "Go to Movie", { :controller => "movie", :action => "list" }, :method => :get, class: "btn btn-lg btn-primary" %>
+  	<%= link_to "Go to Collection", { :controller => "collection", :action => "list" }, :method => :get, class: "btn btn-lg btn-primary" %>
       <ul>
         <li><%= link_to "Sign in", '#', class: "btn btn-lg btn-primary signinbtn" %></li>
       </ul>
